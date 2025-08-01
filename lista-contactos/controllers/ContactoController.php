@@ -11,18 +11,18 @@ class ContactoController {
         $this->contacto = new Contacto($db);
     }
 
-    // GET /contactos
+    
     public function obtenerContactos() {
         $stmt = $this->contacto->obtenerTodos();
         $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($contactos);
     }
 
-    // POST /contactos
+    
     public function crearContacto() {
         $data = json_decode(file_get_contents("php://input"));
 
-        // Validaciones básicas del lado del servidor
+        
         if (
             empty($data->nombre) ||
             !filter_var($data->email, FILTER_VALIDATE_EMAIL) ||
@@ -45,7 +45,7 @@ class ContactoController {
         }
     }
 
-    // DELETE /contactos/:id
+    
     public function eliminarContacto($id) {
         if ($this->contacto->eliminar($id)) {
             echo json_encode(["mensaje" => "Contacto eliminado"]);

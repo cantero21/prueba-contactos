@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "contactos_db"; // asegúrate que esta BD existe
+    private $db_name = "contactos_db"; 
     private $username = "root";
-    private $password = "2906";
+    private $password = " ";
     public $conn;
 
     public function getConnection() {

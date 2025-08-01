@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once __DIR__ . '/../controllers/ContactoController.php';
 
 
-// Obtener la URL y el método HTTP
+
 $metodo = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = rtrim($uri, '/'); // Quita el slash final
+$uri = rtrim($uri, '/'); 
 
 $controller = new ContactoController();
 
-// Ruta base esperada: /lista-contactos/api.php/contactos
+
 
 if (strpos($uri, '/lista-contactos/routes/api.php/contactos') !== false) {
     switch ($metodo) {
@@ -32,7 +32,7 @@ if (strpos($uri, '/lista-contactos/routes/api.php/contactos') !== false) {
             break;
 
         case 'DELETE':
-            // Extraer ID del final de la URL
+            
             $partes = explode('/', $uri);
             $id = end($partes);
             $controller->eliminarContacto($id);
